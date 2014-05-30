@@ -4,6 +4,7 @@
   "description": "Wrapper to ensure an async function runs in series when called multiple times",
   "main": "index.js",
   "scripts": {
+    "prepublish": "make test",
     "test": "make test"
   },
   "repository": {

@@ -1,6 +1,6 @@
 {
   "name": "gated-async",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Wrapper to ensure an async function runs in series when called multiple times",
   "main": "index.js",
   "scripts": {

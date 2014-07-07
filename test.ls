@@ -36,3 +36,20 @@ export
 				
 			fn!
 			fn!
+
+		'can be cancelled': (done)->
+			once = false
+			fn = gated-async (cb)->
+				if once
+					cb!
+					done new Error 'Reached callback'
+				else
+					set-timeout cb, 1000
+					once := true
+
+			fn!
+			fn!
+			set-timeout ->
+				fn.cancel!
+				done!
+			, 500

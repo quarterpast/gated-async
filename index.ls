@@ -2,7 +2,7 @@ module.exports = (fn, opts = {})->
 	running = false
 	queue   = []
 
-	(...args)->
+	function out(...args)
 		if running
 			queue.push [run, args]
 		else
@@ -25,4 +25,8 @@ module.exports = (fn, opts = {})->
 				f ...a
 
 			running := false
-
+	
+	out.cancel = ->
+		running := false
+		queue   := []
+	out

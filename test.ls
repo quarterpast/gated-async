@@ -19,4 +19,20 @@ export
 			fn!
 			fn!
 
+		'should move on after a timeout': (done)->
+			once = false
+			start = Date.now!
+			fn = gated-async do
+				(cb)->
+					if once
+						console.assert Date.now! - start < 10000
+						cb!
+						done!
+					else
+						set-timeout cb, 10000
+						once := true
 
+				timeout: 1000
+				
+			fn!
+			fn!
